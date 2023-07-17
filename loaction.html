@@ -41,6 +41,7 @@
         var clickedMarkerCoords = this.getLatLng();
         var googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
           clickedMarkerCoords.lat + "," + clickedMarkerCoords.lng;
+        
         window.open(googleMapsUrl, "_blank");
       });
     }
@@ -60,6 +61,7 @@
         var coordinate = userCoordinates[i];
         googleMapsUrl += coordinate[0] + "," + coordinate[1] + "/";
       }
+      googleMapsUrl += "?dir_action=navigate";
       window.open(googleMapsUrl, "_blank");
     });
   </script>
