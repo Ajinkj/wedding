@@ -30,10 +30,21 @@ function showPosition(position) {
   var longitude = position.coords.longitude;
 
   // Create a marker at the user's location
-  L.marker([latitude, longitude]).addTo(map);
+  var marker= L.marker([latitude, longitude]).addTo(map);
 
   // Update the map view to the user's location
   map.setView([latitude, longitude], 13);
+  marker.on("click", function() {
+    // Get the clicked marker's coordinates
+    var clickedMarkerCoords = this.getLatLng();
+
+    // Generate the Google Maps URL with the clicked marker's coordinates
+    var googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
+      clickedMarkerCoords.lat + "," + clickedMarkerCoords.lng;
+
+    // Open the Google Maps URL in a new window or tab
+    window.open(googleMapsUrl, "_blank");
+  });
 }
 
 function showError(error) {
