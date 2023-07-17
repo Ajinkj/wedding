@@ -25,7 +25,7 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    var map = L.map("map").setView([10.8505, 76.2711], 5);
+    var map = L.map("map").setView([0, 0], 5);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Map data &copy; OpenStreetMap contributors"
     }).addTo(map);
@@ -41,7 +41,6 @@
         var clickedMarkerCoords = this.getLatLng();
         var googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
           clickedMarkerCoords.lat + "," + clickedMarkerCoords.lng;
-        
         window.open(googleMapsUrl, "_blank");
       });
     }
@@ -56,14 +55,35 @@
     });
 
     document.getElementById("viewAllDestinationsButton").addEventListener("click", function() {
-      var googleMapsUrl = "https://www.google.com/maps/dir/";
+      var googleMapsUrl = "https://www.google.com/maps/dir/Current+Location/";
       for (var i = 0; i < userCoordinates.length; i++) {
         var coordinate = userCoordinates[i];
         googleMapsUrl += coordinate[0] + "," + coordinate[1] + "/";
       }
-      googleMapsUrl += "?dir_action=navigate";
+
+      // Check if the user is on an iOS device
+      var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+      if (iOS) {
+        // Construct the URL scheme for iOS
+        googleMapsUrl = "maps://maps.google.com/maps/dir/?saddr=Current+Location&daddr=";
+        for (var i = 0; i < userCoordinates.length; i++) {
+          var coordinate = userCoordinates[i];
+          googleMapsUrl += coordinate[0] + "," + coordinate[1] + "/";
+        }
+      }
+
       window.open(googleMapsUrl, "_blank");
     });
+
+    // Get user's current location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        map.setView([latitude, longitude], 5); // Set map view to user's current location
+      });
+    }
   </script>
 </body>
 </html>
