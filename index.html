@@ -6,11 +6,11 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Wedding &mdash; wedding invitation template by AJIN K J</title>
+	<title>Wedding &mdash; Online Invitation template by ThinkerBytes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="wedding invitation template by AJIN K J" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="AJIN K j" />
+	<meta name="description" content="Invitx by ThinkerBytes" />
+	<meta name="keywords" content="Wedding; Online Invitation template by ThinkerBytes" />
+	<meta name="author" content="ThinkerBytes" />
 
   <!-- 
 	//////////////////////////////////////////////////////
@@ -171,7 +171,7 @@
     }
 
     .details-wrap .details {
-      width: 200px;
+      width: 200%;
       text-align: center;
 	  margin-left: 5px;
 	  margin-right: 5px;
@@ -199,6 +199,10 @@
   
  </style>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <!-- Add these link tags in the head section of your HTML file -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 	</head>
 	<body>
 		
@@ -215,6 +219,7 @@
 					<ul>
 						<li class="active"><a href="index.html">Home</a></li>
 						<li><a href="about.html">Story</a></li>
+						<li><a href="loc.html">Loc</a></li>
 						<li class="has-dropdown">
 							<a href="services.html">Services</a>
 							<ul class="dropdown">
@@ -280,10 +285,7 @@
 	</div>
   </div>
 							  
-							<p><a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0APRODID:-//Your Website//EN%0D%0AEVENT:BEGIN%0D%0ADTSTART:2023-07-15%0D%0ADTEND:2023-07-15%0D%0ASUMMARY:Save the Date%0D%0ADESCRIPTION:This is a reminder for an important event.%0D%0ALOCATION:Your Location%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR"
-   class="btn btn-default btn-sm">
-   Save the date
-</a>
+							<p><button id="saveDateButton" class="btn btn-default btn-sm">Save the date</button>
 </p>
 						</div>
 					</div>
@@ -457,16 +459,16 @@
 				<div class="col-md-12">
 					<ul id="fh5co-gallery-list">
 						
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-1.jpg); "> 
-						<a href="images/gallery-1.jpg">
+						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/img_bg_2.jpg); "> 
+						<a href="images/img_bg_2.jpg">
 							<div class="case-studies-summary">
 								<span>14 Photos</span>
 								<h2>Two Glas of Juice</h2>
 							</div>
 						</a>
 					</li>
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-2.jpg); ">
-						<a href="#" class="color-2">
+					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/groom.jpg); ">
+						<a href="images/groom.jpg" class="color-2">
 							<div class="case-studies-summary">
 								<span>30 Photos</span>
 								<h2>Timer starts now!</h2>
@@ -475,16 +477,16 @@
 					</li>
 
 
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-3.jpg); ">
-						<a href="#" class="color-3">
+					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/bride.jpg); ">
+						<a href="images/bride.jpg" class="color-3">
 							<div class="case-studies-summary">
 								<span>90 Photos</span>
 								<h2>Beautiful sunset</h2>
 							</div>
 						</a>
 					</li>
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-4.jpg); ">
-						<a href="#" class="color-4">
+					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/img_bg_2.jpg); ">
+						<a href="images/img_bg_2.jpg" class="color-4">
 							<div class="case-studies-summary">
 								<span>12 Photos</span>
 								<h2>Company's Conference Room</h2>
@@ -492,7 +494,7 @@
 						</a>
 					</li>
 
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-5.jpg); ">
+						<!-- <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-5.jpg); ">
 							<a href="#" class="color-3">
 								<div class="case-studies-summary">
 									<span>50 Photos</span>
@@ -533,12 +535,12 @@
 									<h2>Beautiful sunset</h2>
 								</div>
 							</a>
-						</li>
+						</li> -->
 					</ul>		
 				</div>
 			</div>
 		</div>
-	</div>
+	<!-- </div>
 
 	<div id="fh5co-counter" class="fh5co-bg fh5co-counter" style="background-image:url(images/img_bg_5.jpg);">
 		<div class="overlay"></div>
@@ -645,6 +647,20 @@
 				</div>
 			</div>
 		</div>
+	</div> -->
+
+	<div id="fh5co-services" class="fh5co-section-gray">
+		<div class="container">
+			
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Event Location</h2>
+					<p>These is were the event take place.</p>
+	<div id="map" style="height: 400px;"></div>
+
+	</div>
+	</div>
+	</div>
 	</div>
 
 	<div id="fh5co-services" class="fh5co-section-gray">
@@ -653,7 +669,8 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>We Offer Services</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>Like what you see, book our Invitation service. </p>
+					<p><a href="https://forms.gle/2NN9r3r76uhQ5MsS6">Click Here</a></p>
 				</div>
 			</div>
 
@@ -691,12 +708,12 @@
 
 				</div>
 
-				<div class="col-md-6 animate-box">
+				<!-- <div class="col-md-6 animate-box">
 					<div class="fh5co-video fh5co-bg" style="background-image: url(images/img_bg_3.jpg); ">
 						<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video2"></i></a>
 						<div class="overlay"></div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			
@@ -704,7 +721,7 @@
 	</div>
 
 
-	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_4.jpg);">
+	<!-- <div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_4.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row animate-box">
@@ -735,7 +752,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+	<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxipkbvx8v2gHWn9u23HB-gHBSaztwJOI0yl_KPX8PLJcEIw/viewform?embedded=true" width="430" height="988" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> -->
+
+	<!-- HTML code for the map container -->
+
+
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
@@ -743,8 +766,8 @@
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
-						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+						<small class="block">&copy; 2023 ThinkerBytes. All Rights Reserved.</small> 
+						<!-- <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small> -->
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">
@@ -765,6 +788,63 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 	
+
+	
+<script>
+	// JavaScript code to initialize and display the map
+var map = L.map("map").setView([11.1078, 76.0549], 13); // Replace with the desired coordinates and zoom level
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "Map data &copy; OpenStreetMap contributors",
+}).addTo(map);
+
+L.marker([11.1078, 76.0549]).addTo(map); // Replace with the desired marker coordinates
+
+</script>
+<script>
+  document.getElementById("saveDateButton").addEventListener("click", function() {
+    // Define the event details
+    var event = {
+      start: "2023-07-15T10:00:00",
+      end: "2023-07-15T11:00:00",
+      summary: "Save the Date",
+      description: "This is a reminder for the wedding.",
+      location: "Location of the wedding here."
+    };
+
+    // Generate the calendar file content
+    var calendarContent = "BEGIN:VCALENDAR\r\n" +
+      "VERSION:2.0\r\n" +
+      "PRODID:-//Your Website//EN\r\n" +
+      "BEGIN:VEVENT\r\n" +
+      "DTSTART:" + event.start + "\r\n" +
+      "DTEND:" + event.end + "\r\n" +
+      "SUMMARY:" + event.summary + "\r\n" +
+      "DESCRIPTION:" + event.description + "\r\n" +
+      "LOCATION:" + event.location + "\r\n" +
+      "END:VEVENT\r\n" +
+      "END:VCALENDAR";
+
+    // Create a Blob object from the calendar file content
+    var blob = new Blob([calendarContent], { type: "text/calendar;charset=utf-8" });
+
+    // Create a temporary anchor element
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "event.ics";
+    link.style.display = "none";
+
+    // Append the anchor element to the document
+    document.body.appendChild(link);
+
+    // Simulate a click on the anchor element to trigger the download
+    link.click();
+
+    // Remove the anchor element from the document
+    document.body.removeChild(link);
+  });
+</script>
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->

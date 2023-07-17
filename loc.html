@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add these link tags in the head section of your HTML file -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <!-- HTML code to show latitude and longitude on button click -->
+<button id="getLocationButton" class="btn btn-default">Get Location</button>
+<p id="coordinates"></p>
+<!-- HTML code for the map container -->
+<div id="map" style="height: 400px;"></div>
+
+<!-- JavaScript code to handle location retrieval -->
+<script>
+ // JavaScript code to initialize and display the map
+var map = L.map("map").setView([0, 0], 13); // Set initial view to [0, 0] with zoom level 13
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "Map data &copy; OpenStreetMap contributors",
+}).addTo(map);
+
+function showPosition(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+  // Create a marker at the user's location
+  L.marker([latitude, longitude]).addTo(map);
+
+  // Update the map view to the user's location
+  map.setView([latitude, longitude], 13);
+}
+
+function showError(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.");
+      break;
+  }
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+  alert("Geolocation is not supported by this browser.");
+}
+
+</script>
+
+</body>
+</html>
