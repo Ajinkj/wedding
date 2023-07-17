@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Map</title>
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <h1>Location Map</h1>
+  <form id="locationForm">
+    <label for="latitude">Latitude:</label>
+    <input type="number" step="any" id="latitude" required>
+    <br>
+    <label for="longitude">Longitude:</label>
+    <input type="number" step="any" id="longitude" required>
+    <br>
+    <button type="submit">Add Location</button>
+  </form>
+  <button id="viewAllDestinationsButton">View All Destinations</button>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map("map").setView([10.8505, 76.2711], 5);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "Map data &copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    var userCoordinates = [];
+
+    function addLocation(latitude, longitude) {
+      var marker = L.marker([latitude, longitude]).addTo(map);
+      userCoordinates.push([latitude, longitude]);
+
+      // Attach a click event listener to the marker
+      marker.on("click", function() {
+        var clickedMarkerCoords = this.getLatLng();
+        var googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
+          clickedMarkerCoords.lat + "," + clickedMarkerCoords.lng;
+        window.open(googleMapsUrl, "_blank");
+      });
+    }
+
+    document.getElementById("locationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var latitude = parseFloat(document.getElementById("latitude").value);
+      var longitude = parseFloat(document.getElementById("longitude").value);
+      addLocation(latitude, longitude);
+      document.getElementById("latitude").value = "";
+      document.getElementById("longitude").value = "";
+    });
+
+    document.getElementById("viewAllDestinationsButton").addEventListener("click", function() {
+      var googleMapsUrl = "https://www.google.com/maps/dir/";
+      for (var i = 0; i < userCoordinates.length; i++) {
+        var coordinate = userCoordinates[i];
+        googleMapsUrl += coordinate[0] + "," + coordinate[1] + "/";
+      }
+      window.open(googleMapsUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
